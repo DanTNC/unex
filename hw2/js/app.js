@@ -53,7 +53,7 @@ $(document).ready(function(){
     }
   });
   $(".MSOE").click(function(){
-    window.open('http://msoe-fad11204.c9users.io:8080','_blank');
+    window.open('https://evening-earth-76370.herokuapp.com','_blank');
   });
   $(".tipbox").click(function(){
     window.open('https://dantnc.github.io/uidd2017_fintech','_blank');

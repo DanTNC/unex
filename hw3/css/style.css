@@ -1,0 +1,57 @@
+.horizontal-rule {
+    border-top: 1px solid gray;
+    /*margin-left: 5%;*/
+    /*width: 90%;*/
+}
+.half-inch-strut {
+    height: .5in;
+    width: 1in;
+    border: 1px dotted green;
+    margin: 1px 2px 3px 4px;
+    padding-top: 10px;
+    padding-left: 11px;
+    padding-right: 12px;
+    padding-bottom: 13px;
+}
+.red {
+    color: red;
+}
+.yellow-background {
+    background-color: yellow;
+}
+.container {
+    border: 4px dashed blue;
+}
+.container .half-inch-strut {
+    background-color: white;
+}
+.myDiv {
+    color: red;
+    border: 1px solid black;
+    width: 100%;
+}
+@media screen and (max-width: 240px) {
+    .myDiv {
+        width: 1in;
+    }
+}
+@media screen and (min-width: 240px) and (max-width: 500px) {
+    .myDiv {
+        width: 2in;
+    }
+}
+.myDiv::before {
+    content: "[";
+}
+.myDiv::after {
+    content: "]";
+}
+a {
+    border: 1px solid red;
+}
+a:link {
+    color: green;
+}
+a:visited {
+    color: red;
+}
