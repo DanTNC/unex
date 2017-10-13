@@ -19,6 +19,7 @@
 #main {
    margin-left: 19vw;
    margin-right: 19vw;
+   color: white;
 }
 
 .works p, .works p i {
@@ -148,9 +149,9 @@ button:focus {
     padding: 5px;
 }
 
-pre {
-   color: white;
-   font-size: 150%;
+#about h2 {
+   margin-left: -1vw;
+   font-size: 3vw;
 }
 
 #about button img {
@@ -171,6 +172,10 @@ pre {
    border-radius: 10px;
 }
 
+#contact {
+   text-align: center;
+}
+
 #contact button img {
    width: 50px;
    height: 50px;
@@ -189,7 +194,7 @@ pre {
    border-radius: 10px;
 }
 
-#about pre img {
+#about img {
    width: 24vw;
    float: right;
 }
@@ -265,7 +270,6 @@ td {
    padding: 0.7vw;
    border-radius: 8px;
    border: none;
-   margin-left: -3vw;
    margin-top: 1.5vw;
 }
 
@@ -283,4 +287,21 @@ td {
 #contact_me input#submit:hover {
    color: black;
    background-color: white;
+}
+
+/*for table divs*/
+.table{
+  display: table;
+}
+.table .thead{
+  display:table-header-group;
+}
+.table .tbody{
+  display:table-row-group;
+}
+.table .tr{
+  display:table-row;
+}
+.table .th, .table .td{
+  display:table-cell;
 }

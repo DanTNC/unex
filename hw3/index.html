@@ -32,62 +32,62 @@
     <br><br><br><br>
     <div id="main">
       <div id="about">
-        <pre>
-          <h2>About Me</h2>
-          <img src="/img/Dan.png"/>
-          <table id="abouttable">
-            <tr>
-              <td>Name:</td>
-              <td>Ting An Yen/Dan</td>
-            </tr>
-            <tr>
-              <td>Age:</td>
-              <td>21</td>
-            </tr>
-            <tr>
-              <td>Department:</td>
-              <td>NCKU EE (Taiwan)/ UC Berkeley Extension (US)</td>
-            </tr>
-            <tr>
-              <td>Birth:</td>
-              <td>1996/7/11</td>
-            </tr>
-          </table>
-          <p>
-            I'm BGA student now. I'm from Taiwan's National Cheng Kung University.<br>
-            My major is EE, and I'm especially into CS. I've learned web software <br>
-            designing for only a year. I'll stay in the US for a semester and go<br>
-            back to Taiwan to do research in Machine Learning in graduate school.
-          </p>
-        </pre>
+        <h2>About Me</h2>
+        <img src="/img/Dan.png"/>
+        <div id="abouttable" class="table">
+          <div class="tbody">
+            <div class="tr">
+              <div class="td">Name:</div>
+              <div class="td">Ting An Yen/Dan</div>
+            </div>
+            <div class="tr">
+              <div class="td">Age:</div>
+              <div class="td">21</div>
+            </div>
+            <div class="tr">
+              <div class="td">Department:</div>
+              <div class="td">NCKU EE (Taiwan)/ UC Berkeley Extension (US)</div>
+            </div>
+            <div class="tr">
+              <div class="td">Birth:</div>
+              <div class="td">1996/7/11</div>
+            </div>
+          </div>
+        </div>
+        <p>
+          I'm BGA student now. I'm from Taiwan's National Cheng Kung University.<br>
+          My major is EE, and I'm especially into CS. I've learned web software <br>
+          designing for only a year. I'll stay in the US for a semester and go<br>
+          back to Taiwan to do research in Machine Learning in graduate school.
+        </p>
         <button>
           <img src="/img/works.png"/>
         </button>
       </div>
       <div  id="contact">
-        <pre>
-          <table>
-            <tr class="c1">
-              <td>FB:</td>
-              <td>顏廷安</td>
-            </tr>
-            <tr class="c2">
-              <td>IG:</td>
-              <td>fad11203</td>
-            </tr>
-            <tr>
-              <td>email:</td>
-              <td>fad11204@berkeley.edu</td>
-            </tr>
-          </table>
-          <p>Contact me!!</p>
-          <form id="contact_me" action="/php/echo.php" method="post">
-            <input type="text" name="name" placeholder="Name"/>
-            <input type="text" name="email" placeholder="Email"/>
-            <input type="text" name="message" placeholder="Message"/>
-            <input id="submit" type="submit" value="Submit"/>
-          </form>
-        </pre>
+        <div id="contacttable" class="table">
+          <div class="tbody">
+            <div class="tr c1">
+              <div class="td">FB:</div>
+              <div class="td">顏廷安</div>
+            </div>
+            <div class="tr c2">
+              <div class="td">IG:</div>
+              <div class="td">fad11203</div>
+            </div>
+            <div class="tr">
+              <div class="td">email:</div>
+              <div class="td">fad11204@berkeley.edu</div>
+            </div>
+          </div>
+        </div>
+        <p>Contact me!!</p>
+        <form id="contact_me" action="/php/echo.php" method="post">
+          <input type="text" name="name" placeholder="Name"/><br>
+          <input type="text" name="email" placeholder="Email"/><br>
+          <input type="text" name="message" placeholder="Message"/><br>
+          <input id="submit" type="submit" value="Submit"/><br>
+        </form>
         <button class="c1">
           <img src="/img/fb2.png"/>
         </button>
