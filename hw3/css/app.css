@@ -261,8 +261,13 @@ body {
    cursor: pointer;
 }
 
-td {
-   padding: 0.5vw;
+#works_but {
+   text-align: center;
+}
+
+#contacttable {
+   margin: auto;
+   text-align: left;
 }
 
 #contact_me input {
@@ -287,6 +292,10 @@ td {
 #contact_me input#submit:hover {
    color: black;
    background-color: white;
+}
+
+#c_but {
+   margin-top: 2vw;
 }
 
 /*for table divs*/
