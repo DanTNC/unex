@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    </head>
+    <body>
+        <h1>In Hw 3 docroot</h1>
+        <div class="horizontal-rule"></div>
+        <div style="border: 1px solid red; margin: .1in">
+            <form action="/php/echo.php" method="post">
+                <label for="date-element">Choose the date.</label>
+                <input type="date" id="date-element"/>
+                <br>
+                <label for="ri">My Range</label>
+                <input type="range" id="ri" min="1" max="100"/>
+                <br>
+                <label for="email">My Email</label>
+                <input type="email" id="email" required/>
+                <br>
+                <select id="myList">
+                    <option>
+                    </option>
+                </select>
+                <br>
+                
+                <datalist id="myData">
+                    <option>
+                    </option>
+                </datalist>
+                
+                <div class="container">
+                    <div class="half-inch-strut yellow-background red">
+                        Strut
+                    </div>
+                </div>
+                <div class="half-inch-strut yellow-background">
+                    Second strut
+                </div>
+                <table>
+                    <tr id="name-row">
+                        <td>Name: </td><td><input type="text" name="name"/></td>
+                    </tr>
+                    <tr>
+                        <td>Address: </td><td><input type="text" name="address"/></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Submit"/>
+            </form>
+        </div>
+        Text <a href="http://holub.com">My Web Site</a> Text
+        <div class="myDiv">foo</div>
+    </body>
+</html>
