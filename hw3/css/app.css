@@ -1,74 +1,74 @@
 @import url('https://fonts.googleapis.com/css?family=Mukta');
 
 #name {
-   border-bottom: 3px solid hsla(200,60%,70%,0.3);
-   width: 50%;
-   height: auto;
-   margin: auto;
+  border-bottom: 3px solid hsla(200,60%,70%,0.3);
+  width: 50%;
+  height: auto;
+  margin: auto;
 }
 
 #name p a {
-   color: #16b6f1;
-   font-size: 300%;
+  color: #16b6f1;
+  font-size: 4vw;
 }
 
 * {
-   font-family: 'Mukta', sans-serif;
+  font-family: 'Mukta', sans-serif;
 }
 
 #main {
-   margin-left: 19vw;
-   margin-right: 19vw;
-   color: white;
+  margin-left: 19vw;
+  margin-right: 19vw;
+  color: white;
 }
 
 .works p, .works p i {
-   font-size: 1.3vw;
+  font-size: 1.3vw;
 }
 
 nav {
-   float: left;
-   width: 10vw;
-   margin: 0;
-   padding: 1em;
-   position: fixed;
-   height: 100%;
-   z-index: 100;
+  float: left;
+  width: 10vw;
+  margin: 0;
+  padding: 1em;
+  position: fixed;
+  height: 100%;
+  z-index: 100;
 }
 
 ul {
-   list-style-type: none;
-   height: 100%;
-   padding-left: 0;
-   padding-right: 0;
+  list-style-type: none;
+  height: 100%;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 li a, footer {
-   color: white;
-   font-size: 200%;
+  color: white;
+  font-size: 200%;
 }
 
 li {
-   padding-right: 0;
-   padding-left: 30%;
-   cursor: pointer;
+  padding-right: 0;
+  padding-left: 30%;
+  cursor: pointer;
 }
 
 li:hover {
-   background-color: hsla(0, 0%, 50%, 0.2);
+  background-color: hsla(0, 0%, 50%, 0.2);
 }
 
 .link p a button {
-   background-color: hsla(0, 100%, 50%, 0.0);
-   border: none;
-   color: white;
-   padding: 1% 3%;
-   text-align: center;
-   text-decoration: none;
-   display: inline-block;
-   float: left;
-   font-size: 100%;
-   cursor: pointer;
+  background-color: hsla(0, 100%, 50%, 0.0);
+  border: none;
+  color: white;
+  padding: 1% 3%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  float: left;
+  font-size: 100%;
+  cursor: pointer;
 }
 
 .link p a button span {
@@ -79,7 +79,7 @@ li:hover {
 }
 
 button:focus {
-   outline:none;
+  outline:none;
 }
 
 .a span:after {
@@ -129,173 +129,188 @@ button:focus {
 
 
 .link p a button:hover {
-   background-color: white;
-   border: none;
-   color: black;
-   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  background-color: white;
+  border: none;
+  color: black;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .link {
-   font-size: 250%;
-   width: 50%;
-   height: auto;
-   margin: auto;
-   text-align: right;
+  font-size: 250%;
+  width: 50%;
+  height: auto;
+  margin: auto;
+  text-align: right;
 }
 
 #about, #contact {
-    /*display: none;*/
-    /*background-color: hsla(240, 0%, 0%, 0.6);*/
-    padding: 5px;
+  padding: 5px;
 }
 
-#about h2 {
-   margin-left: -1vw;
-   font-size: 3vw;
+#about h2, #contact_h {
+  margin-left: -1vw;
+  font-size: 3vw;
+}
+
+#about_image {
+  background-image: url("/img/Dan.png");
+  background-size: cover;
+  height: 27vw;
+  width: 27vw;
+  float: right;
 }
 
 #about button img {
-   width: 200px;
-   height: 100px;
+  width: 200px;
+  height: 100px;
 }
 
 #about button {
-   background-color: hsla(0, 100%, 50%, 0.0);
-   border: none;
-   display: inline-block;
-   cursor: pointer;
-   transition: 0.5s;
+  background-color: hsla(0, 100%, 50%, 0.0);
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 #about button:hover {
-   background-color: hsla(200, 20%, 15%, 0.5);
-   border-radius: 10px;
+  background-color: hsla(200, 20%, 15%, 0.5);
+  border-radius: 10px;
+}
+
+#about p, .td {
+  font-size: 1.4vw;
 }
 
 #contact {
-   text-align: center;
+  margin-bottom: 4vw
 }
 
 #contact button img {
-   width: 50px;
-   height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 #contact button {
-   background-color: hsla(0, 100%, 50%, 0.0);
-   border: none;
-   display: inline-block;
-   cursor: pointer;
-   transition: 0.5s;
+  background-color: hsla(0, 100%, 50%, 0.0);
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 #contact button:hover {
-   background-color: hsla(200, 20%, 15%, 0.5);
-   border-radius: 10px;
-}
-
-#about img {
-   width: 24vw;
-   float: right;
+  background-color: hsla(200, 20%, 15%, 0.5);
+  border-radius: 10px;
 }
 
 div.works {
-   margin: auto;
-   border: 2px solid white;
-   display: none;
-   width: 20vw;
+  margin: auto;
+  border: 2px solid white;
+  display: none;
+  width: 20vw;
 }
 
 div.works img {
-   width: 100%;
-   height: auto;
+  width: 100%;
+  height: auto;
 }
 
 div.works div {
-   padding: 15px;
-   text-align: center;
-   color: white;
-   height: 15vw;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  height: 15vw;
 }
 
 footer {
-   height: 60px;
-   position: absolute;
-   clear: both;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   padding: 1em;
-   margin-top: 3em;
-   clear: left;
-   text-align: center;
-   font-size: 300%;
-   background-color: hsla(240, 0%, 0%, 0.2);
+  height: 60px;
+  position: absolute;
+  clear: both;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1em;
+  margin-top: 3em;
+  clear: left;
+  text-align: center;
+  font-size: 4vw;
+  background-color: hsla(240, 0%, 0%, 0.2);
 }
 
 #container {
-   min-height: 100%;
-   position:relative;
-   background-color: hsla(240, 0%, 0%, 0.6);
+  min-height: 100%;
+  position:relative;
+  background-color: hsla(240, 0%, 0%, 0.6);
 }
 
 article {
-   padding-bottom: 300px;
+  padding-bottom: 300px;
 }
 
 html, body {
-   height: 100%;
-   margin: 0;
-   padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-   background-image: url("/img/TNC.png");
-   background-color: black;
-   background-size: cover;
-   background-repeat: no-repeat; 
-   overflow: scroll;
+  background-image: url("/img/TNC.png");
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat; 
+  overflow: scroll;
 }
 
 .c1, .c2, .MSOE, .tipbox {
-   cursor: pointer;
+  cursor: pointer;
 }
 
 #works_but {
-   text-align: center;
+  text-align: center;
+  margin-top: 6vw;
 }
 
 #contacttable {
-   margin: auto;
-   text-align: left;
+  text-align: left;
+}
+
+#contact_me {
+  float: right;
 }
 
 #contact_me input {
-   width: 27vw;
-   padding: 0.7vw;
-   border-radius: 8px;
-   border: none;
-   margin-top: 1.5vw;
+  width: 27vw;
+  padding: 0.7vw;
+  border-radius: 8px;
+  border: none;
+  margin-top: 1.5vw;
 }
 
 #contact_me input:focus {
-   outline: none;
+  outline: none;
 }
 
 #contact_me input#submit {
-   width: 28.5vw;
-   color: white;
-   background-color: gray;
-   cursor: pointer;
+  width: 28.5vw;
+  color: white;
+  background-color: gray;
+  cursor: pointer;
+  -webkit-appearance: none;
 }
 
 #contact_me input#submit:hover {
-   color: black;
-   background-color: white;
+  color: black;
+  background-color: white;
+  -webkit-appearance: none;
 }
 
 #c_but {
-   margin-top: 2vw;
+  margin-top: 2vw;
+}
+
+#c_left {
+  float: left;
 }
 
 /*for table divs*/
@@ -313,4 +328,65 @@ body {
 }
 .table .th, .table .td{
   display:table-cell;
+  padding: 0.4vw;
+}
+
+@media screen and (max-device-width: 640px){
+  
+  #about h2, #contact_h {
+    font-size: 7vw;
+  }
+  
+  #about p, .td {
+    font-size: 4.5vw;
+  }
+  
+  #main {
+    margin-left: 11vw;
+    margin-right: 11vw;
+  }
+  
+  #about_image {
+    height: 59vw;
+    width: 59vw;
+    margin: auto;
+    float: none;
+  }
+  
+  #name {
+    width: 75%;
+  }
+  
+  #name p a, footer {
+    font-size: 7vw;
+  }
+  
+  #contact {
+    text-align: center;
+  }
+
+  #c_left {
+    float: none;
+    margin: auto;
+  }
+  
+  #contacttable {
+    margin: auto;
+  }
+  
+  #contact_me {
+    float: none;
+  }
+  
+  #contact_me input {
+    width: 70vw;
+    height: 7vw;
+    font-size: 4vw;
+  }
+  
+  #contact_me input#submit {
+    width: 71.5vw;
+    height: 8vw;
+  }
+  
 }

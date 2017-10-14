@@ -5,6 +5,7 @@
     <link rel="Shortcut Icon" type="image/x-icon" href="/img/[N]beta.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="/js/app.js"></script>
+    <script src="https://use.fontawesome.com/8f35e9e801.js"></script>
     <meta charset="utf-8">
   </head>
   <body>
@@ -29,11 +30,11 @@
     <!--      <a><button class="c"><span>C</span></button></a>-->
     <!--    </p>-->
     <!--</div>-->
-    <br><br><br><br>
     <div id="main">
       <div id="about">
         <h2>About Me</h2>
-        <img src="/img/Dan.png"/>
+        <div id="about_image">
+        </div>
         <div id="abouttable" class="table">
           <div class="tbody">
             <div class="tr">
@@ -52,52 +53,68 @@
               <div class="td">Birth:</div>
               <div class="td">1996/7/11</div>
             </div>
+            <div class="tr">
+              <div class="td">Skill:</div>
+              <div class="td">
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;C/C++</div>
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;systemC</div>
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;verilog</div>
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;python</div>
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;ruby</div>
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;html</div>
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;css</div>
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;javascript</div>
+                <div class="sk"><i class="fa fa-caret-right" aria-hidden="true"></i>&nbsp;node js</div>
+              </div>
+            </div>
           </div>
         </div>
         <p>
-          I'm BGA student now. I'm from Taiwan's National Cheng Kung University.<br>
-          My major is EE, and I'm especially into CS. I've learned web software <br>
-          designing for only a year. I'll stay in the US for a semester and go<br>
+          I'm BGA student now. I'm from Taiwan's National Cheng Kung University.
+          My major is EE, and I'm especially into CS. I've learned web software
+          designing for only a year. I'll stay in the US for a semester and go
           back to Taiwan to do research in Machine Learning in graduate school.
         </p>
-        <div id="works_but">
-          <button>
-            <img src="/img/works.png"/>
-          </button>
-        </div>
+        <!--<div id="works_but">-->
+        <!--  <button>-->
+        <!--    <img src="/img/works.png"/>-->
+        <!--  </button>-->
+        <!--</div>-->
       </div>
+      <h2 id="contact_h">Contact me</h2>
       <div  id="contact">
-        <div id="contacttable" class="table">
-          <div class="tbody">
-            <div class="tr c1">
-              <div class="td">FB:</div>
-              <div class="td">顏廷安</div>
-            </div>
-            <div class="tr c2">
-              <div class="td">IG:</div>
-              <div class="td">fad11203</div>
-            </div>
-            <div class="tr">
-              <div class="td">email:</div>
-              <div class="td">fad11204@berkeley.edu</div>
+        <div id="c_left">
+          <div id="contacttable" class="table">
+            <div class="tbody">
+              <div class="tr c1">
+                <div class="td">FB:</div>
+                <div class="td">顏廷安</div>
+              </div>
+              <div class="tr c2">
+                <div class="td">IG:</div>
+                <div class="td">fad11203</div>
+              </div>
+              <div class="tr">
+                <div class="td">email:</div>
+                <div class="td">fad11204@berkeley.edu</div>
+              </div>
             </div>
           </div>
+          <div id="c_but">
+            <button class="c1">
+              <img src="/img/fb2.png"/>
+            </button>
+            <button class="c2">
+              <img src="/img/ig.png"/>
+            </button>
+          </div>
         </div>
-        <p>Contact me!!</p>
         <form id="contact_me" action="/php/echo.php" method="post">
           <input type="text" name="name" placeholder="Name"/><br>
           <input type="text" name="email" placeholder="Email"/><br>
           <input type="text" name="message" placeholder="Message"/><br>
           <input id="submit" type="submit" value="Submit"/><br>
         </form>
-        <div id="c_but">
-          <button class="c1">
-            <img src="/img/fb2.png"/>
-          </button>
-          <button class="c2">
-            <img src="/img/ig.png"/>
-          </button>
-        </div>
       </div>
     </div>
     <br><br>
@@ -130,7 +147,7 @@
     </div>
     </center>
     </article>
-    <footer>[TNC]&nbsp;&nbsp; Have a nice day &nbsp;&nbsp;[TNC]</footer>
+    <footer>Have a nice day</footer>
   </div>
   </body>
 </html>
