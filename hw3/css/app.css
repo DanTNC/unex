@@ -331,6 +331,18 @@ body {
   padding: 0.4vw;
 }
 
+.td a {
+  text-decoration-style: dotted;
+}
+
+.td a:link{
+  color: #16b6f1;
+}
+
+.td a:visited, .td a:active{
+  color: #69ccf0;
+}
+
 @media screen and (max-device-width: 640px){
   
   #about h2, #contact_h {
