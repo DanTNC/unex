@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta');
+
+* {
+  font-family: 'Mukta', sans-serif;
+}
+
+.table{
+  display: table;
+  width: 100vw;
+}
+.table .thead{
+  display:table-header-group;
+}
+.table .tbody{
+  display:table-row-group;
+}
+.table .tr{
+  display:table-row;
+}
+.table .th, .table .td{
+  display:table-cell;
+  padding: 1vw;
+}
+
+p {
+  padding: 1vw;
+}
