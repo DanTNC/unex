@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            var lineItem = {
+                'description': "this is the thing",
+                'cost': 1.0,
+                'qty': 1
+            };
+            
+            var getHTMLForLineItem = (lineItem)=>{
+                return "<div class='line-item'>"
+                        + "<div class='description'>"
+                        +       lineItem.description
+                        + "</div>"
+                        + " "
+                        + lineItem.cost
+                        + " "
+                        + lineItem.qty
+                    + "</div>";
+            }
+            
+            var up = (amount)=>{ change(amount) };
+            var down = (amount)=>{ change(-amount) };
+            var change = (amount)=>{ 
+                var bar = document.getElementById("myProgressBar");
+                bar.value += amount;
+                
+                document.getElementById("currentValue").innerHTML = bar.value;
+            };
+            window.onload = ()=>{
+                document.getElementById("the-order").innerHTML = getHTMLForLineItem(lineItem);
+            };
+        </script>
+        <style type="text/css">
+            button {
+                width: 2vw;
+            }
+            .description {
+                font-weight: bold;
+                color: blue;
+                display: inline;
+            }
+            .line-item {
+                border: 1px solid black;
+                padding: 1em;
+                width: 3in;
+            }
+        </style>
+    </head>
+    <body>
+        <h1> I'm here </h1>
+        
+        <form id="myform" action="/echo.php" method="post">
+            <input type="hidden" name="myValue" value="50"></input>
+            
+            <h1>Current Value is <span id="currentValue">50</span></h1>
+            
+            <div id="the-order">
+            </div>
+            
+            <progress id="myProgressBar" value="50" max="100"></progress>
+            <br>
+            
+            <button type="button" onclick="down(10);">-</button><br>
+            <button type="button" onclick="up(10);">+</button><br>
+        </form>
+    </body>
+</html>
