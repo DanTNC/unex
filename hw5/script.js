@@ -2,9 +2,9 @@
 
 var Order;
 
-var resolve = (order)=>{
-    Order = JSON.parse(order);
-};
+// var resolve = (order)=>{
+//     Order = JSON.parse(order);
+// };
 
 var getTotal = (o)=>{
     var TotalCost = 0;
@@ -73,12 +73,14 @@ window.onload = ()=>{
     req.open('GET', 'json/order.json');
     req.onload = ()=>{
         if(req.status == 200){
-            resolve(req.responseText);
+            //resolve(req.responseText);
+            Order = req.response;
             render();
         }else{
             console.error("Error on getting th order");
             document.getElementById("order").innerHTML = "Sorry, we can't find your order.";
         }
     }
+    req.responseType = "json";
     req.send();
 };
