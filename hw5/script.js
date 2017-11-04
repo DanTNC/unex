@@ -1,17 +1,10 @@
 'use strict';
 
-var Order = [
-    { description: "Apple", cost: "1.1", quantity: "10" },
-    { description: "Banana", cost: "1.2", quantity: "9" },
-    { description: "Lettuce", cost: "1.3", quantity: "8" },
-    { description: "Milk", cost: "2.4", quantity: "7" },
-    { description: "Soy milk", cost: "2.5", quantity: "6" },
-    { description: "Beef", cost: "2.6", quantity: "5" },
-    { description: "Pork", cost: "3.7", quantity: "4" },
-    { description: "Pasta", cost: "3.8", quantity: "3" },
-    { description: "Pizza", cost: "3.9", quantity: "2" },
-    { description: "Coffee", cost: "4.0", quantity: "1" }
-];
+var Order;
+
+var resolve = (order)=>{
+    Order = JSON.parse(order);
+};
 
 var getTotal = (o)=>{
     var TotalCost = 0;
@@ -21,16 +14,23 @@ var getTotal = (o)=>{
     return Math.round(TotalCost*100)/100;
 };
 
-var changeTotal = (input)=>{
+var changeTotal = (index)=>{
+    var input = document.getElementById("quantity_"+index);
+    if (input.value < 0){
+        input.value = 0;
+    }
+    input.value = Math.round(input.value)
+    if(isNaN(input.value)){
+        input.value = 0;
+    }
     if(input.value == 0){
         input.parentNode.parentNode.style.display = "none";
     }
-    Order[Number(input.id.replace("quantity_", ""))].quantity = input.value;
+    Order[index].quantity = input.value;
     document.getElementById("total").innerHTML = getTotal(Order);
 };
 
-window.onload = ()=>{
-        
+var render = ()=>{
     var Table = document.createElement("div");
     Table.className = "table";
     Table.innerHTML = '<div class="tbody"><div class="tr"><div class="th">Description</div><div class="th">Cost</div><div class="th">Quantity</div></div></div>';
@@ -52,7 +52,7 @@ window.onload = ()=>{
         QuaInput.className = "quantity";
         QuaInput.value = item.quantity;
         QuaInput.setAttribute("type", "text");
-        QuaInput.setAttribute("onchange", "changeTotal(this);");
+        QuaInput.setAttribute("onchange", "changeTotal(" + i + ");");
         Qua.appendChild(QuaInput);
         Row.appendChild(Des);
         Row.appendChild(Cos);
@@ -66,4 +66,19 @@ window.onload = ()=>{
     var Ordernode = document.getElementById("order")
     Ordernode.replaceChild(Table, Ordernode.childNodes[0]);
     Ordernode.appendChild(TotalCostnode);
+};
+
+window.onload = ()=>{
+    var req = new XMLHttpRequest();
+    req.open('GET', 'json/order.json');
+    req.onload = ()=>{
+        if(req.status == 200){
+            resolve(req.responseText);
+            render();
+        }else{
+            console.error("Error on getting th order");
+            document.getElementById("order").innerHTML = "Sorry, we can't find your order.";
+        }
+    }
+    req.send();
 };

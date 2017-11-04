@@ -1,0 +1,12 @@
+[
+    { "description": "Apple", "cost": "1.1", "quantity": "10" },
+    { "description": "Banana", "cost": "1.2", "quantity": "9" },
+    { "description": "Lettuce", "cost": "1.3", "quantity": "8" },
+    { "description": "Milk", "cost": "2.4", "quantity": "7" },
+    { "description": "Soy milk", "cost": "2.5", "quantity": "6" },
+    { "description": "Beef", "cost": "2.6", "quantity": "5" },
+    { "description": "Pork", "cost": "3.7", "quantity": "4" },
+    { "description": "Pasta", "cost": "3.8", "quantity": "3" },
+    { "description": "Pizza", "cost": "3.9", "quantity": "2" },
+    { "description": "Coffee", "cost": "4.0", "quantity": "1" }
+]
