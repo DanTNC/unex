@@ -17,6 +17,7 @@
 }
 .table .tr{
   display:table-row;
+  border: 5px solid red;
 }
 .table .th, .table .td{
   display:table-cell;
@@ -26,6 +27,10 @@
 .quantity {
   text-align: right;
   width: 7vw;
+}
+
+body {
+  margin: 0;
 }
 
 p {

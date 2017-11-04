@@ -1,20 +1,17 @@
 'use strict';
 
-var Order;
-
-// var resolve = (order)=>{
-//     Order = JSON.parse(order);
-// };
-
-var getTotal = (o)=>{
+var getTotal = ()=>{//Calculate the totalCost for the lineItems in the DOM.
     var TotalCost = 0;
-    for (var i of o){
-        TotalCost += Number(i.cost) * Number(i.quantity);
+    for (var item of document.getElementsByClassName("tr")){
+        if (item.classList.contains("header")){
+            continue;
+        }
+        TotalCost += Number(item.getElementsByClassName("cost")[0].innerHTML) * Number(item.getElementsByClassName("quantity")[0].value);
     }
-    return Math.round(TotalCost*100)/100;
+    return TotalCost.toFixed(2);
 };
 
-var changeTotal = (index)=>{
+var filterValue = (index)=>{//Filter out float, negative value, and non-number string from the input value.
     var input = document.getElementById("quantity_"+index);
     if (input.value < 0){
         input.value = 0;
@@ -26,14 +23,18 @@ var changeTotal = (index)=>{
     if(input.value == 0){
         input.parentNode.parentNode.style.display = "none";
     }
-    Order[index].quantity = input.value;
-    document.getElementById("total").innerHTML = getTotal(Order);
 };
 
-var render = ()=>{
+var changeTotal = (index)=>{//Event Handler to change the displayed totalCost
+    filterValue(index);
+    document.getElementById("total").innerHTML = getTotal();
+};
+
+var render = (Order)=>{//Render the received order.
+    
     var Table = document.createElement("div");
     Table.className = "table";
-    Table.innerHTML = '<div class="tbody"><div class="tr"><div class="th">Description</div><div class="th">Cost</div><div class="th">Quantity</div></div></div>';
+    Table.innerHTML = '<div class="tbody"><div class="tr header"><div class="th">Description</div><div class="th">Cost</div><div class="th">Quantity</div></div></div>';
     
     for ( var i in Order ){
         let item = Order[i];
@@ -43,7 +44,7 @@ var render = ()=>{
         Des.className = "td";
         Des.innerHTML = item.description;
         var Cos = document.createElement("div");
-        Cos.className = "td";
+        Cos.classList = "td cost";
         Cos.innerHTML = item.cost;
         var Qua = document.createElement("div");
         Qua.className = "td";
@@ -60,11 +61,11 @@ var render = ()=>{
         Table.getElementsByClassName("tbody")[0].appendChild(Row);
     }
     
-    var TotalCostnode = document.createElement("p");
-    TotalCostnode.innerHTML = "total cost : &nbsp;<span id='total'>" +getTotal(Order) + "</span>"; //round off to the second decimal place
-    
     var Ordernode = document.getElementById("order")
     Ordernode.replaceChild(Table, Ordernode.childNodes[0]);
+    
+    var TotalCostnode = document.createElement("p");
+    TotalCostnode.innerHTML = "total cost : &nbsp;<span id='total'>" +getTotal() + "</span>";
     Ordernode.appendChild(TotalCostnode);
 };
 
@@ -73,9 +74,7 @@ window.onload = ()=>{
     req.open('GET', 'json/order.json');
     req.onload = ()=>{
         if(req.status == 200){
-            //resolve(req.responseText);
-            Order = req.response;
-            render();
+            render(req.response);
         }else{
             console.error("Error on getting th order");
             document.getElementById("order").innerHTML = "Sorry, we can't find your order.";
