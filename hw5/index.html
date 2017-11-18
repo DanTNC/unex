@@ -3,8 +3,17 @@
   <head>
   <link rel="stylesheet" href="app.css" type="text/css" />
   <script type="text/javascript" src="script.js"></script>
+  <script src="https://use.fontawesome.com/8f35e9e801.js"></script>
   </head>
   <body>
     <div id="order"> Will be replaced by list. </div>
+    <div id="popup">
+      <div id="popup_mes">
+        Are you sure you want to remove this item?
+      </div>
+      <button id="yes" onclick="remove();">Yes</button>
+      <button id="no" onclick="back();">Cancel</button>
+    </div>
+    <div id="popup_filter"></div>
   </body>
 </html>

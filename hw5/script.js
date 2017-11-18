@@ -17,6 +17,32 @@ var getTotal = ()=>{//Calculate the totalCost for the lineItems in the DOM.
     return TotalCost.toFixed(2);
 };
 
+var remove = ()=>{
+    var index = document.getElementById("popup").getAttribute("data-index");
+    document.getElementById("quantity_"+index).parentNode.parentNode.style.visibility = "collapse";
+    document.getElementById("total").innerHTML = getTotal();
+    popup(index, false);
+};
+
+var back = ()=>{
+    var index = document.getElementById("popup").getAttribute("data-index");
+    document.getElementById("quantity_"+index).value = 1;
+    document.getElementById("total").innerHTML = getTotal();
+    popup(index, false);
+};
+
+
+var popup = (index, show)=>{
+    if(show){
+        document.getElementById("popup").style.visibility = "visible";
+        document.getElementById("popup").setAttribute("data-index", index);
+        document.getElementById("popup_filter").style.visibility = "visible";
+    }else{
+        document.getElementById("popup").style.visibility = "collapse";
+        document.getElementById("popup_filter").style.visibility = "collapse";
+    }
+};
+
 var filterValue = (index)=>{//Filter out float, negative value, and non-number string from the input value.
     var input = document.getElementById("quantity_"+index);
     if (input.value < 0){
@@ -27,13 +53,32 @@ var filterValue = (index)=>{//Filter out float, negative value, and non-number s
         input.value = 0;
     }
     if(input.value == 0){
-        input.parentNode.parentNode.style.display = "none";
+        //input.parentNode.parentNode.style.display = "none";
+        popup(index, true);
+        return false;
+    }else{
+        return true;
     }
 };
 
 var changeTotal = (index)=>{//Event Handler to change the displayed totalCost.
-    filterValue(index);
-    document.getElementById("total").innerHTML = getTotal();
+    if(filterValue(index)){
+        document.getElementById("total").innerHTML = getTotal();
+    }
+};
+
+var changeQuantity = (index, amount)=>{
+    var QuaInput = document.getElementById("quantity_" + index);
+    QuaInput.value = Number(QuaInput.value) + amount;
+    changeTotal(index);
+};
+
+var upQuantity = (index)=>{
+    changeQuantity(index, 1);
+};
+
+var downQuantity = (index)=>{
+    changeQuantity(index, -1);
 };
 
 var getDesNode = (item)=>{
@@ -59,6 +104,8 @@ var getQuaNode = (item, i)=>{
     QuaInput.value = item.quantity;
     QuaInput.setAttribute("type", "text");
     QuaInput.setAttribute("onchange", "changeTotal(" + i + ");");
+    Qua.innerHTML += ('<i class="fa fa-caret-square-o-up updownbutton" aria-hidden="true" onclick="upQuantity('+ i +');"></i>');
+    Qua.innerHTML += ('<i class="fa fa-caret-square-o-down updownbutton" aria-hidden="true" onclick="downQuantity('+ i +');"></i>');
     Qua.appendChild(QuaInput);
     return Qua;
 };
