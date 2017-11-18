@@ -153,8 +153,13 @@ var displayTotal = (Ordernode)=>{
     Ordernode.appendChild(TotalCostnode);
 };
 
-var render = (Order)=>{//Render the received order.
-    displayTotal(fillOrder(getOrderSkeletonNode(), Order));
+var displayCustomer = (Customer)=>{
+    
+};
+
+var render = (OrderInfo)=>{//Render the received order.
+    displayCustomer(OrderInfo.customer);
+    displayTotal(fillOrder(getOrderSkeletonNode(), OrderInfo.lineItems));
 };
 
 var loadOrderError = ()=>{
