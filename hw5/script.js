@@ -1,12 +1,18 @@
 'use strict';
 
+var getItemTotal = (item)=>{//Calculate the totalCost for one lineItem in the DOM.
+    var total =  Number(item.getElementsByClassName("cost")[0].innerHTML) * Number(item.getElementsByClassName("quantity")[0].value);
+    item.getElementsByClassName("item_total")[0].innerHTML = total.toFixed(2);
+    return total;
+};
+
 var getTotal = ()=>{//Calculate the totalCost for the lineItems in the DOM.
     var TotalCost = 0;
     for (var item of document.getElementsByClassName("tr")){
         if (item.classList.contains("header")){
             continue;
         }
-        TotalCost += Number(item.getElementsByClassName("cost")[0].innerHTML) * Number(item.getElementsByClassName("quantity")[0].value);
+        TotalCost += getItemTotal(item);
     }
     return TotalCost.toFixed(2);
 };
@@ -16,7 +22,7 @@ var filterValue = (index)=>{//Filter out float, negative value, and non-number s
     if (input.value < 0){
         input.value = 0;
     }
-    input.value = Math.round(input.value)
+    input.value = Math.round(input.value);
     if(isNaN(input.value)){
         input.value = 0;
     }
@@ -46,8 +52,8 @@ var getCosNode = (item)=>{
 
 var getQuaNode = (item, i)=>{
     var Qua = document.createElement("div");
-    Qua.className = "td";
-    var QuaInput = document.createElement("input")
+    Qua.classList = "td quantity_cell";
+    var QuaInput = document.createElement("input");
     QuaInput.id = "quantity_"+i;
     QuaInput.className = "quantity";
     QuaInput.value = item.quantity;
@@ -57,34 +63,37 @@ var getQuaNode = (item, i)=>{
     return Qua;
 };
 
-var assembleItemSubNodes = (Des, Cos, Qua)=>{
+var getTotNode = ()=>{
+    var Tot = document.createElement("div");
+    Tot.classList = "td item_total";
+    return Tot;
+};
+
+var assembleItemSubNodes = (Nodes)=>{
     var Row = document.createElement("div");
     Row.className = "tr";
-    Row.appendChild(Des);
-    Row.appendChild(Cos);
-    Row.appendChild(Qua);
+    for (var node of Nodes){
+        Row.appendChild(node);
+    }
     return Row;
 };
 
 var getItemNode = (item, i)=>{//Create a DOM node for an item.
-    var Des = getDesNode(item);
-    var Cos = getCosNode(item);
-    var Qua = getQuaNode(item, i);
-    return assembleItemSubNodes(Des, Cos, Qua);
+    return assembleItemSubNodes([getDesNode(item), getCosNode(item), getQuaNode(item, i), getTotNode()]);
 };
 
-var getOrderSkeletonNode = ()=>{//Create a DOM node for whole order skeleton. (table now but would be modified)
+var getOrderSkeletonNode = ()=>{//Create a DOM node for whole order skeleton.
     var Skeleton = document.createElement("div");
     Skeleton.className = "table";
-    Skeleton.innerHTML = '<div class="tbody"><div class="tr header"><div class="th">Description</div><div class="th">Cost</div><div class="th">Quantity</div></div></div>';
+    Skeleton.innerHTML = '<div class="tbody"><div class="tr header"><div class="th">Description</div><div class="th">Cost</div><div class="th righth">Quantity</div><div class="th righth">Total</div></div></div>';
     return Skeleton;
 };
 
 var fillOrder = (Skeleton, Order)=>{
+    var SkeletonBody = Skeleton.getElementsByClassName("tbody")[0];
     for ( var i in Order ){
         let item = Order[i];
-        Skeleton.getElementsByClassName("tbody")[0].appendChild(getItemNode(item, i));
-        console.log(Skeleton);
+        SkeletonBody.appendChild(getItemNode(item, i));
     }
     var Ordernode = document.getElementById("order");
     Ordernode.replaceChild(Skeleton, Ordernode.childNodes[0]);
@@ -115,7 +124,7 @@ window.onload = ()=>{
         }else{
             loadOrderError();
         }
-    }
+    };
     req.responseType = "json";
     req.send();
 };
