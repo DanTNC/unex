@@ -144,6 +144,9 @@ var fillOrder = (Skeleton, Order)=>{
     }
     var Ordernode = document.getElementById("order");
     Ordernode.replaceChild(Skeleton, Ordernode.childNodes[0]);
+    var Statementnode = document.createElement("p");
+    Statementnode.innerHTML = "Here's your order:";
+    Ordernode.insertBefore(Statementnode, Skeleton);
     return Ordernode;
 };
 
@@ -154,7 +157,12 @@ var displayTotal = (Ordernode)=>{
 };
 
 var displayCustomer = (Customer)=>{
-    
+    var Greetingnode = document.createElement("h1");
+    Greetingnode.innerHTML = "Hi " + Customer.suffix + " " + Customer.name + ",";
+    var Addressnode = document.createElement("h3");
+    Addressnode.innerHTML = "address: " + Customer.address;
+    document.getElementsByTagName("body")[0].insertBefore(Greetingnode, document.getElementById("order"));
+    document.getElementsByTagName("body")[0].insertBefore(Addressnode, document.getElementById("order"));
 };
 
 var render = (OrderInfo)=>{//Render the received order.

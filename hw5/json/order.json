@@ -1,7 +1,8 @@
 {
     "customer":{
-        "name":"Ting An Yen",
-        "address":"1111 Some St. Some City 99999"
+        "name": "Ting An Yen",
+        "address": "1111 Some St. Some City 99999",
+        "suffix": "Mr."
     },
     "lineItems":[
         { "description": "Apple", "cost": "1.1", "quantity": "10" },

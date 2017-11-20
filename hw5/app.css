@@ -3,7 +3,22 @@
 * {
   font-family: 'Mukta', sans-serif;
   color: #ffffff;
+}
+
+h1, h3 {
+  padding-left: 1vw;
+}
+
+#order {
   font-size: 1.5vw;
+}
+
+#order .table {
+  margin-left: 1.5vw;
+}
+
+#order p {
+  font-size: 2vw;
 }
 
 .table{
