@@ -46,7 +46,7 @@ var popupOption = (operation)=>{
     var index = document.getElementById("popup").getAttribute("data-index");
     operation(index);
     document.getElementById("total").innerHTML = getTotal();
-    popup(index, false);
+    popup(false);
 }; 
 
 var remove = ()=>{
@@ -62,15 +62,10 @@ var back = ()=>{
 };
 
 
-var popup = (index, show)=>{
-    if(show){
-        document.getElementById("popup").style.visibility = "visible";
-        document.getElementById("popup").setAttribute("data-index", index);
-        document.getElementById("popup_filter").style.visibility = "visible";
-    }else{
-        document.getElementById("popup").style.visibility = "collapse";
-        document.getElementById("popup_filter").style.visibility = "collapse";
-    }
+var popup = (show)=>{
+    var visibility = show?"visible":"collapse";
+    document.getElementById("popup").style.visibility = visibility;
+    document.getElementById("popup_filter").style.visibility = visibility;
 };
 
 var filterValue = (index)=>{//Filter out float, negative value, and non-number string from the input value.
@@ -83,8 +78,8 @@ var filterValue = (index)=>{//Filter out float, negative value, and non-number s
         input.value = 0;
     }
     if(input.value == 0){
-        //input.parentNode.parentNode.style.display = "none";
-        popup(index, true);
+        document.getElementById("popup").setAttribute("data-index", index);
+        popup(true);
         return false;
     }else{
         return true;
