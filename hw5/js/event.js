@@ -42,18 +42,23 @@ var getTotal = ()=>{//Calculate the totalCost for the lineItems in the DOM.
     return TotalCost.toFixed(2);
 };
 
-var remove = ()=>{
+var popupOption = (operation)=>{
     var index = document.getElementById("popup").getAttribute("data-index");
-    document.getElementById("quantity_"+index).parentNode.parentNode.style.visibility = "collapse";
+    operation(index);
     document.getElementById("total").innerHTML = getTotal();
     popup(index, false);
+}; 
+
+var remove = ()=>{
+    popupOption(function(index){
+        document.getElementById("quantity_"+index).parentNode.parentNode.style.visibility = "collapse";
+    });
 };
 
 var back = ()=>{
-    var index = document.getElementById("popup").getAttribute("data-index");
-    document.getElementById("quantity_"+index).value = 1;
-    document.getElementById("total").innerHTML = getTotal();
-    popup(index, false);
+    popupOption(function(index){
+        document.getElementById("quantity_"+index).value = 1;
+    });
 };
 
 
