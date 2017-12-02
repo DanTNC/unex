@@ -42,8 +42,7 @@ var LineItem = function(lineItem){
         return Qua;
     };
     this.getTotNode = function(){
-        var Tot = document.createElement("div");
-        Tot.classList = "td item_total";
+        var Tot = this.getTdNode("item_total");
         return Tot;
     };
     this.assembleItemSubNodes = function(Nodes){
