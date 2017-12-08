@@ -1,4 +1,5 @@
 'use strict';
+/*global $*/
 
 //EventListeners and their helper functions
 
@@ -8,7 +9,7 @@ var render = (OrderInfo)=>{//Render the received order.
 
 var loadOrderError = ()=>{
     console.error("Error on getting th order");
-    document.getElementById("order").innerHTML = "Sorry, we can't find your order.";
+    $("#order").text("Sorry, we can't find your order.");
 };
 
 window.onload = ()=>{
@@ -26,14 +27,15 @@ window.onload = ()=>{
 };
 
 var getItemTotal = (item)=>{//Calculate the totalCost for one lineItem in the DOM.
-    var total =  Number(item.getElementsByClassName("cost")[0].innerHTML) * Number(item.getElementsByClassName("quantity")[0].value);
-    item.getElementsByClassName("item_total")[0].innerHTML = total.toFixed(2);
+    item = $(item);
+    var total =  Number(item.find(".cost").html()) * Number(item.find(".quantity").val());
+    item.find(".item_total").text(total.toFixed(2));
     return total;
 };
 
 var getTotal = ()=>{//Calculate the totalCost for the lineItems in the DOM.
     var TotalCost = 0;
-    for (let item of document.getElementsByClassName("tr")){
+    for (let item of $(".tr")){
         if (item.classList.contains("header")){
             continue;
         }
@@ -43,42 +45,42 @@ var getTotal = ()=>{//Calculate the totalCost for the lineItems in the DOM.
 };
 
 var popupOption = (operation)=>{
-    var index = document.getElementById("popup").getAttribute("data-index");
+    var index = $("#popup").attr("data-index");
     operation(index);
-    document.getElementById("total").innerHTML = getTotal();
+    $("#total").html(getTotal());
     popup(false);
 }; 
 
 var remove = ()=>{
     popupOption(function(index){
-        document.getElementById("quantity_"+index).parentNode.parentNode.style.visibility = "collapse";
+        $("#quantity_"+index).parents(".tr").css("visibility", "collapse");
     });
 };
 
 var back = ()=>{
     popupOption(function(index){
-        document.getElementById("quantity_"+index).value = 1;
+        $("#quantity_"+index).val(1);
     });
 };
 
 
 var popup = (show)=>{
     var visibility = show?"visible":"collapse";
-    document.getElementById("popup").style.visibility = visibility;
-    document.getElementById("popup_filter").style.visibility = visibility;
+    $("#popup").css("visibility", visibility);
+    $("#popup_filter").css("visibility", visibility);
 };
 
 var filterValue = (index)=>{//Filter out float, negative value, and non-number string from the input value.
-    var input = document.getElementById("quantity_"+index);
-    if (input.value < 0){
-        input.value = 0;
+    var input = $("#quantity_"+index);
+    if (input.val() < 0){
+        input.val(0);
     }
-    input.value = Math.round(input.value);
-    if(isNaN(input.value)){
-        input.value = 0;
+    input.val(Math.round(input.val()));
+    if(isNaN(input.val())){
+        input.val(0);
     }
-    if(input.value == 0){
-        document.getElementById("popup").setAttribute("data-index", index);
+    if(input.val() == 0){
+        $("#popup").attr("data-index", index);
         popup(true);
         return false;
     }else{
@@ -88,13 +90,13 @@ var filterValue = (index)=>{//Filter out float, negative value, and non-number s
 
 var changeTotal = (index)=>{//Event Handler to change the displayed totalCost.
     if(filterValue(index)){
-        document.getElementById("total").innerHTML = getTotal();
+        $("#total").html(getTotal());
     }
 };
 
 var changeQuantity = (index, amount)=>{
-    var QuaInput = document.getElementById("quantity_" + index);
-    QuaInput.value = Number(QuaInput.value) + amount;
+    var QuaInput = $("#quantity_"+index);
+    QuaInput.val(Number(QuaInput.val()) + amount);
     changeTotal(index);
 };
 
