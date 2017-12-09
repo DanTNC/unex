@@ -22,8 +22,7 @@ var Order = function(lineItems){
     this.fillOrder = function(container, Skeleton){
         var SkeletonBody = Skeleton.find(".tbody");
         for (let i in this._lineItems){
-            let item = this._lineItems[i];
-            item.appendTo(SkeletonBody, i);
+            this._lineItems[i].appendTo(SkeletonBody, i);
         }
         container.html("").append($("<p>Here's your order:</p>")).append(Skeleton);
     };
