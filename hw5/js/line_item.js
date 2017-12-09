@@ -8,7 +8,10 @@ var LineItem = function(lineItem){
     this._quantity = lineItem.quantity;
     this.getNode = function(tableEle, className){
         className = className || "";
-        var Node = $("<div class='" + tableEle + " " + className + "'></div>");
+        // var Node = $("<div class='" +  + "'></div>");
+        var Node = $("<div/>",{
+                "class": tableEle + " " + className
+            });
         return Node;
     };
     this.getTdNode = function(className){
@@ -18,25 +21,20 @@ var LineItem = function(lineItem){
         return this.getNode("tr", className);
     };
     this.getDesNode = function(){
-        var Des = this.getTdNode();
-        Des.html(this._description);
-        return Des;
+        return this.getTdNode().html(this._description);
     };
     this.getCosNode = function(){
-        var Cos = this.getTdNode("cost");
-        Cos.html(this._cost);
-        return Cos;
+        return this.getTdNode("cost").html(this._cost);
     };
     this.getQuaNode = function(i){
-        var Qua = this.getTdNode("quantity_cell");
-        var QuaInput = $("<input class='quantity' id='quantity_" + i + "'></input>");
-        QuaInput.val(this._quantity);
-        QuaInput.attr("type", "text");
-        QuaInput.attr("onchange", "changeTotal(" + i + ");");
-        Qua.append($('<i class="fa fa-caret-square-o-up updownbutton" aria-hidden="true" onclick="upQuantity('+ i +');"></i>'));
-        Qua.append($('<i class="fa fa-caret-square-o-down updownbutton" aria-hidden="true" onclick="downQuantity('+ i +');"></i>'));
-        Qua.append(QuaInput);
-        return Qua;
+        var QuaInput = $("<input class='quantity' id='quantity_" + i + "'/>", {
+            "type": "text",
+            "onchange": "changeTotal(" + i + ");"
+        }).val(this._quantity);
+        return this.getTdNode("quantity_cell")
+            .append($('<i class="fa fa-caret-square-o-up updownbutton" aria-hidden="true" onclick="upQuantity('+ i +');"></i>'))
+            .append($('<i class="fa fa-caret-square-o-down updownbutton" aria-hidden="true" onclick="downQuantity('+ i +');"></i>'))
+            .append(QuaInput);
     };
     this.getTotNode = function(){
         var Tot = this.getTdNode("item_total");
@@ -49,7 +47,7 @@ var LineItem = function(lineItem){
         }
         return Row;
     };
-    this.getItemNode = function(i){//Create a DOM node for an item.
-        return this.assembleItemSubNodes([this.getDesNode(), this.getCosNode(), this.getQuaNode(i), this.getTotNode()]);
+    this.appendTo = function(container, i){//Append a DOM node for an item to the container.
+        container.append(this.assembleItemSubNodes([this.getDesNode(), this.getCosNode(), this.getQuaNode(i), this.getTotNode()]));
     };
 };

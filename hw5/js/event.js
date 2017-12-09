@@ -3,28 +3,28 @@
 
 //EventListeners and their helper functions
 
-var render = (OrderInfo)=>{//Render the received order.
-    (new Cart(OrderInfo)).render();
+var render = (container, OrderInfo)=>{//Render the received order.
+    (new Cart(OrderInfo)).render(container);
 };
 
-var loadOrderError = ()=>{
+var loadOrderError = (container)=>{
     console.error("Error on getting th order");
-    $("#order").text("Sorry, we can't find your order.");
+    container.text("Sorry, we can't find your order.");
 };
 
-window.onload = ()=>{
+$( ()=>{
     var req = new XMLHttpRequest();
     req.open('GET', 'json/order.json');
     req.onload = ()=>{
         if(req.status == 200){
-            render(req.response);
+            render($("#order"), req.response);
         }else{
-            loadOrderError();
+            loadOrderError($("#order"));
         }
     };
     req.responseType = "json";
     req.send();
-};
+} );
 
 var getItemTotal = (item)=>{//Calculate the totalCost for one lineItem in the DOM.
     item = $(item);
@@ -35,12 +35,12 @@ var getItemTotal = (item)=>{//Calculate the totalCost for one lineItem in the DO
 
 var getTotal = ()=>{//Calculate the totalCost for the lineItems in the DOM.
     var TotalCost = 0;
-    for (let item of $(".tr")){
-        if (item.classList.contains("header")){
-            continue;
+    $(".tr").each( function(index, element){
+        if (element.classList.contains("header")){
+            return;
         }
-        TotalCost += getItemTotal(item);
-    }
+        TotalCost += getItemTotal(element);
+    });
     return TotalCost.toFixed(2);
 };
 
