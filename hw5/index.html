@@ -2,6 +2,7 @@
 <html>
   <head>
   <link rel="stylesheet" href="css/app.css" type="text/css" />
+  <link rel="stylesheet" href="css/mobile.css" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript" src="js/line_item.js"></script>
   <script type="text/javascript" src="js/order.js"></script>
@@ -16,8 +17,8 @@
       <div id="popup_mes">
         Are you sure you want to remove this item?
       </div>
-      <button id="yes" onclick="remove();">Yes</button>
-      <button id="no" onclick="back();">Cancel</button>
+      <button class="popup_button" id="yes" onclick="remove();">Yes</button>
+      <button class="popup_button" id="no" onclick="back();">Cancel</button>
     </div>
     <div id="popup_filter"></div>
   </body>
