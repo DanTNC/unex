@@ -8,11 +8,9 @@ var LineItem = function(lineItem){
     this._quantity = lineItem.quantity;
     this.getNode = function(tableEle, className){
         className = className || "";
-        // var Node = $("<div class='" +  + "'></div>");
-        var Node = $("<div/>",{
-                "class": tableEle + " " + className
-            });
-        return Node;
+        return $("<div/>",{
+            "class": tableEle + " " + className
+        });
     };
     this.getTdNode = function(className){
         return this.getNode("td", className);
@@ -27,7 +25,9 @@ var LineItem = function(lineItem){
         return this.getTdNode("cost").html(this._cost);
     };
     this.getQuaNode = function(i){
-        var QuaInput = $("<input class='quantity' id='quantity_" + i + "'/>", {
+        var QuaInput = $("<input/>", {
+            "class": "quantity",
+            "id": "quantity_" + i,
             "type": "text",
             "onchange": "changeTotal(" + i + ");"
         }).val(this._quantity);
@@ -37,8 +37,7 @@ var LineItem = function(lineItem){
             .append(QuaInput);
     };
     this.getTotNode = function(){
-        var Tot = this.getTdNode("item_total");
-        return Tot;
+        return this.getTdNode("item_total");
     };
     this.assembleItemSubNodes = function(Nodes){
         var Row = this.getTrNode();

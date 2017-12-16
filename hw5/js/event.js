@@ -63,11 +63,15 @@ var back = ()=>{
     });
 };
 
+const popup_top = (window.screen.width < 640)? "60vw": "20vw";
 
 var popup = (show)=>{
-    var visibility = show?"visible":"collapse";
-    $("#popup").css("visibility", visibility);
-    $("#popup_filter").css("visibility", visibility);
+    $("#popup").css("top", show? popup_top: "-100vw");
+    if(show){
+        $("#popup_filter").fadeIn(500);
+    }else{
+        $("#popup_filter").fadeOut(500);
+    }
 };
 
 var filterValue = (index)=>{//Filter out float, negative value, and non-number string from the input value.

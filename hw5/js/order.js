@@ -24,10 +24,10 @@ var Order = function(lineItems){
         for (let i in this._lineItems){
             this._lineItems[i].appendTo(SkeletonBody, i);
         }
-        container.html("").append($("<p>Here's your order:</p>")).append(Skeleton);
+        container.empty().append($("<p>Here's your order:</p>")).append(Skeleton);
     };
     this.displayTotal = function(container){
-        container.append($("<p>total cost : &nbsp;<span id='total'>" + getTotal() + "</span></p>"));
+        container.append($("<p id='total_cost'>total cost : &nbsp;<span id='total'>" + getTotal() + "</span></p>"));
     };
     this.render = function(container){
         this.fillOrder(container, this.getOrderSkeletonNode());
